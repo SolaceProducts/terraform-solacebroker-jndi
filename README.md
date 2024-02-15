@@ -8,7 +8,7 @@ Full details are provided in the [Examples](#examples).
 
 JNDI access must be enabled on the Message VPN. This can be configured using the [Service Module](). By default JNDI access is not enabled on Solace PubSub+ appliances, but it is enabled on Solace PubSub+ software event brokers.
 
-To configure JNDI managed objects (JNDI Topics and Queues) use the [Queues & Endpoint Module]().
+To configure JNDI managed objects (JNDI Topics and Queues) when provisioning a PubSub+ queue or topic endpoint, use the [Queues & Endpoint Module]().
 
 ## Module input variables
 
@@ -31,7 +31,11 @@ Most optional variables' default value is null.
 
 ## Module outputs
 
-The output provides reference to created resources. Any reference for a resource that has not been created for an endpoint type will be set to `(null)`.
+The output provides reference to created resources. Any reference to a resource that has not been created will be set to `(null)`.
+
+Outputs:
+* `connection_factory` - the connection factory created
+* `xa_connection_factory` - an alternative reference to the `connection_factory` if an XA connection factory has been created
 
 ## Providers
 
@@ -41,32 +45,18 @@ The output provides reference to created resources. Any reference for a resource
 
 ## Resources
 
-The following table shows the resources created for each `endpoint-type` value. "X" denotes a resource always created, "O" is a resource that may be created optionally  
+The following table shows the resources created depending on the `xa_enabled` variable. "X" denotes a resource always created, "O" is a resource that may be created optionally.
 
-| Name | queue | topic_endpoint | queue_template | topic_endpoint_template |
-|------|------|------|------|------|
-| solacebroker_msg_vpn_queue | X | | | |
-| solacebroker_msg_vpn_jndi_queue | O | | | |
-| solacebroker_msg_vpn_queue_subscription | O | | | |
-| solacebroker_msg_vpn_topic_endpoint | | X | | |
-| solacebroker_msg_vpn_jndi_topic | | O | | |
-| solacebroker_msg_vpn_queue_template | | | X | |
-| solacebroker_msg_vpn_topic_endpoint_template | | | | X |
+| Name | `false` or not specified | `true` |
+|------|------|------|
+| solacebroker_msg_vpn_jndi_connection_factory | X | X |
 
 ## Examples
 
 Refer to the following configuration examples:
 
-- Queue
-    - [Exclusive queue](examples/exclusive-queue)
-    - [Non-exclusive queue](examples/non-exclusive-queue)
-    - [Partitioned queue](examples/partitioned-queue)
-    - [Queue with topic subscriptions](examples/queue-with-topic-subscriptions)
-    - [Queue with exposed JNDI](examples/queue-with-jndi)
-- [Queue template](examples/queue-template)
-- [Topic endpoint](examples/topic-endpoint)
-    - [Topic endpoint with exposed JNDI](examples/topic-endpoint-with-jndi)
-- [Topic endpoint template](examples/topic-endpoint-template)
+- [Connection factory](examples/connection-factory)
+- [XA connection factory](examples/xa-connection-factory)
 
 ## Module use recommendations
 
