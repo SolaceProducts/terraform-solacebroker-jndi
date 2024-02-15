@@ -3,6 +3,8 @@ resource "solacebroker_msg_vpn_jndi_connection_factory" "main" {
 
   msg_vpn_name    = var.msg_vpn_name
   connection_factory_name = var.connection_factory_name
+  transport_direct_transport_enabled = var.xa_enabled == true ? false : var.transport_direct_transport_enabled
+  xa_enabled = var.xa_enabled
 
   #AutoAddAttributes #EnableCommonVariables
 }

@@ -5,18 +5,22 @@ provider "solacebroker" {
 }
 
 module "testcf" {
-  source = "../../internal/gen-template"
+  source = "../.."
+  # version = ""
 
   msg_vpn_name  = "default"
   connection_factory_name = "/JNDI/CF/GettingStarted"
+  transport_compression_level = 3
 }
 
 module "testcfxa" {
-  source = "../../internal/gen-template"
+  source = "../.."
+  # version = ""
 
   msg_vpn_name  = "default"
   connection_factory_name = "/JNDI/CF/GettingStartedXA"
   xa_enabled = true
+  transport_compression_level = 3
 }
 
 output "connection_factory" {
