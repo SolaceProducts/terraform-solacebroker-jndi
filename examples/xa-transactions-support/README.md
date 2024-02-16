@@ -1,21 +1,27 @@
-# Exclusive Queue Example
+# Connection Factory with XA Transactions Support Example
 
-Configuration in this directory creates a [connection factory](https://docs.solace.com/API/Solace-JMS-API/Connection-Factories.htm) on the PubSub+ event broker leveraging the JNDI Terraform module.
+Configuration in this directory creates a [connection factory](https://docs.solace.com/API/Solace-JMS-API/Connection-Factories.htm) object in the JNDI store on the PubSub+ event broker, with XA transactions support.
 
 ## Module Configuration in the Example
 
 ### Mandatory Inputs
 
 * `msg_vpn_name` - set to `default` in the example
-* `connection_factory_name` - set to `/JNDI/CF/GettingStarted` in the example
+* `connection_factory_name` - set to `/JNDI/CF/XATransSupport` in the example
 
 ### Optional Inputs
+
+* `xa_enabled` - shall be set to `true` to configure a connection factory with XA support.
+
+Note: connection factories must have the `transport_direct_transport_enabled` input variable disabled to support local and XA transactions. This is automatically ensured in this module if `xa_enabled` is `true`.
 
 Optional module input variables have the same name as the attributes of the underlying provider resource. If omitted then the default for the related resource attribute will be configured on the broker. For attributes and defaults, refer to the [documentation of "solacebroker_msg_vpn_queue"](https://registry.terraform.io/providers/SolaceProducts/solacebroker/latest/docs/resources/msg_vpn_queue#optional).
 
 ### Output
 
 The module `provisioned_connection_factory` output refers to the created connection factory.
+
+The module `xa_provisioned_connection_factory` output is an alternative way to refer to the created connection factory, it will be a valid non-null object only if XA is enabled.
 
 ## Created resources
 

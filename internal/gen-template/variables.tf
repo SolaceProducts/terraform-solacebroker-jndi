@@ -14,8 +14,14 @@ variable "connection_factory_name" {
 
 # Optional variables
 
+variable "local_transactions_enabled" {
+  description = "Enable or disable local transactions support for the connection factory. Enabling XA will enable local transactions support regardless of this variable."
+  type        = bool
+  default     = false
+}
+
 variable "xa_enabled" {
-  description = "Enable or disable connection factory as an XA Connection Factory."
+  description = "Enable or disable XA transactions support for the connection factory."
   type        = bool
   default     = null
 }

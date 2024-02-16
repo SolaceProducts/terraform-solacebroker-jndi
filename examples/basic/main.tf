@@ -22,11 +22,8 @@ module "testcf" {
   # update with the module location
   source = "../.."
 
-  msg_vpn_name  = "default"
+  msg_vpn_name            = "default"
   connection_factory_name = "/JNDI/CF/GettingStarted"
-  
-  # unless "xa_enabled" is specified and set to "true" the conection factory is non-XA
-  # xa_enabled = false
 }
 
 output "provisioned_connection_factory" {

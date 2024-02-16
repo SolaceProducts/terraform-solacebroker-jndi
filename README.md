@@ -1,25 +1,26 @@
 # Solace PubSub+ Software Event Broker JNDI Terraform Module
 
-Terraform module to configure a non-XA or XA [connection factory](https://docs.solace.com/API/Solace-JMS-API/Connection-Factories.htm) in the JNDI store of a [Solace PubSub+ Event Broker](https://solace.com/products/event-broker/). 
+Terraform module to configure a [connection factory object](https://docs.solace.com/API/Solace-JMS-API/Connection-Factories.htm) in the JNDI store of a [Solace PubSub+ Event Broker](https://solace.com/products/event-broker/). 
 
 Full details are provided in the [Examples](#examples).
 
 ## Related modules
 
-JNDI access must be enabled on the Message VPN. This can be configured using the [Service Module](). By default JNDI access is not enabled on Solace PubSub+ appliances, but it is enabled on Solace PubSub+ software event brokers.
+To use JNDI, JNDI access must be enabled on the Message VPN. This can be configured using the [Service Module](TODO:fixlink). By default JNDI access is not enabled on Solace PubSub+ appliances, but it is enabled on Solace PubSub+ software event brokers.
 
-To configure JNDI managed objects (JNDI Topics and Queues) when provisioning a PubSub+ queue or topic endpoint, use the [Queues & Endpoint Module]().
+To configure JNDI managed objects (JNDI Topics and Queues) when provisioning a PubSub+ queue or topic endpoint, use the [Queues & Endpoint Module](TODO:fixlink).
 
 ## Module input variables
 
 ### Required
 
-* `msg_vpn_name` - Endpoints and endpoint templates are specific to a Message VPN on the broker
+* `msg_vpn_name` - JNDI configuration is specific to a Message VPN on the broker
 * `connection_factory_name` - The name of the connection factory to be created
 
 ### Optional
 
-* `xa_enabled`
+* `local_transactions_enabled` - specifies if the connection factory shall support local transactions. The default is `false`.
+* `xa_enabled` - specifies if the connection factory shall support XA transactions. Also enables local local transactions support. The default is `false`. Note: this variable has the same name and use as the underlying resource attribute.
 
 Additional optional module variables names are the same as the underlying connection factory resource attributes. The recommended approach to determine variable name mappings is to look up the resource's documentation for matching attribute names:
 
@@ -27,15 +28,15 @@ Additional optional module variables names are the same as the underlying connec
 |---------------|
 |[solacebroker_msg_vpn_jndi_connection_factory](https://registry.terraform.io/providers/SolaceProducts/solacebroker/latest/docs/resources/msg_vpn_jndi_connection_factory#optional)|
 
-Most optional variables' default value is null.
+Most optional variables' default value is `null`, meaning that is not provided then the resource default value will be provisioned on the broker.
 
 ## Module outputs
 
-The output provides reference to created resources. Any reference to a resource that has not been created will be set to `(null)`.
+[Module outputs](https://developer.hashicorp.com/terraform/language/values/outputs) provide reference to created resources. Any reference to a resource that has not been created will be set to `(null)`.
 
 Outputs:
 * `connection_factory` - the connection factory created
-* `xa_connection_factory` - an alternative reference to the `connection_factory` if an XA connection factory has been created
+* `xa_connection_factory` - an alternative reference to the same `connection_factory`, only if an XA connection factory has been created
 
 ## Providers
 
@@ -45,18 +46,19 @@ Outputs:
 
 ## Resources
 
-The following table shows the resources created depending on the `xa_enabled` variable. "X" denotes a resource always created, "O" is a resource that may be created optionally.
+The following table shows the resources created.
 
-| Name | `false` or not specified | `true` |
-|------|------|------|
-| solacebroker_msg_vpn_jndi_connection_factory | X | X |
+| Name |      |
+|------|------|
+| solacebroker_msg_vpn_jndi_connection_factory | Always |
 
 ## Examples
 
 Refer to the following configuration examples:
 
-- [Connection factory](examples/connection-factory)
-- [XA connection factory](examples/xa-connection-factory)
+- [Connection factory](examples/basic/)
+    - [Connection factory with local transactions support](examples/local-transactions-support/)
+    - [Connection factory with XA transactions support](examples/xa-transactions-support/)
 
 ## Module use recommendations
 
