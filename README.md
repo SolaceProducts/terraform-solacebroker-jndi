@@ -6,21 +6,21 @@ Full details are provided in the [Examples](#examples).
 
 ## Related modules
 
-To use JNDI, JNDI access must be enabled on the Message VPN. This can be configured using the [Service Module](TODO:fixlink). By default JNDI access is not enabled on Solace PubSub+ appliances, but it is enabled on Solace PubSub+ software event brokers.
+To use JNDI, JNDI access must be enabled on the Message VPN. This can be configured using the [Service Module](TODO:fixlink). By default, JNDI access is not enabled on Solace PubSub+ appliances, but it is enabled on Solace PubSub+ software event brokers.
 
-To configure JNDI managed objects (JNDI Topics and Queues) when provisioning a PubSub+ queue or topic endpoint, use the [Queues & Endpoint Module](TODO:fixlink).
+To configure JNDI managed objects (JNDI Topics and Queues) when provisioning a PubSub+ queue or topic endpoint, use the [Queues & Endpoints Module](TODO:fixlink).
 
 ## Module input variables
 
 ### Required
 
-* `msg_vpn_name` - JNDI configuration is specific to a Message VPN on the broker
+* `msg_vpn_name` - the Message VPN on the broker for which JNDI configuration is created
 * `connection_factory_name` - The name of the connection factory to be created
 
 ### Optional
 
 * `local_transactions_enabled` - specifies if the connection factory shall support local transactions. The default is `false`.
-* `xa_enabled` - specifies if the connection factory shall support XA transactions. Also enables local local transactions support. The default is `false`. Note: this variable has the same name and use as the underlying resource attribute.
+* `xa_enabled` - specifies if the connection factory shall support XA transactions. When enabled it also enables local transactions support. The default is `false`. Note: this variable has the same name and use as the underlying resource attribute.
 
 Additional optional module variables names are the same as the underlying connection factory resource attributes. The recommended approach to determine variable name mappings is to look up the resource's documentation for matching attribute names:
 
@@ -28,7 +28,7 @@ Additional optional module variables names are the same as the underlying connec
 |---------------|
 |[solacebroker_msg_vpn_jndi_connection_factory](https://registry.terraform.io/providers/SolaceProducts/solacebroker/latest/docs/resources/msg_vpn_jndi_connection_factory#optional)|
 
-Most optional variables' default value is `null`, meaning that is not provided then the resource default value will be provisioned on the broker.
+Most optional variables' default value is `null`, meaning that if not provided then the resource default value will be provisioned on the broker.
 
 ## Module outputs
 
@@ -48,9 +48,9 @@ Outputs:
 
 The following table shows the resources created.
 
-| Name |      |
-|------|------|
-| solacebroker_msg_vpn_jndi_connection_factory | Always |
+| Name |
+|------|
+| solacebroker_msg_vpn_jndi_connection_factory |
 
 ## Examples
 

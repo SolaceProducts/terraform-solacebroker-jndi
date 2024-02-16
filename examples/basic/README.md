@@ -29,6 +29,15 @@ This example will create following resources:
 
 If you don't already have access to a broker, refer to the [Developers page](https://www.solace.dev/) for options to get started.
 
+### Sample source code
+
+The sample is available from the module GitHub repo:
+
+```
+git clone https://github.com/SolaceProducts/terraform-solacebroker-jndi.git
+cd examples/basic
+```
+
 ### Adjust Provider Configuration
 
 Adjust the [provider parameters](https://registry.terraform.io/providers/SolaceProducts/solacebroker/latest/docs#schema) in `main.tf` according to your broker. The example configuration shows settings for a local broker running in Docker.
