@@ -37,7 +37,7 @@ If you don't already have access to a broker, refer to the [Developers page](htt
 
 The sample is available from the module GitHub repo:
 
-```
+```bash
 git clone https://github.com/SolaceProducts/terraform-solacebroker-jndi.git
 cd examples/local-transactions-support
 ```
@@ -53,9 +53,9 @@ Hint: You can verify configuration changes on the broker, before and after, usin
 Execute from this folder:
 
 ```bash
-$ terraform init
-$ terraform plan
-$ terraform apply
+terraform init
+terraform plan
+terraform apply
 ```
 
 Run `terraform destroy` to clean up created resources when no longer needed.

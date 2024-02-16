@@ -6,7 +6,7 @@ Full details are provided in the [Examples](#examples).
 
 ## Related modules
 
-To use JNDI, JNDI access must be enabled on the Message VPN. This can be configured using the [Service Module](TODO:fixlink). By default, JNDI access is not enabled on Solace PubSub+ appliances, but it is enabled on Solace PubSub+ software event brokers.
+To use JNDI, access must be enabled on the Message VPN. This can be configured using the [Service Module](TODO:fixlink). By default, JNDI access is not enabled on Solace PubSub+ appliances, but it is enabled on Solace PubSub+ software event brokers.
 
 To configure JNDI managed objects (JNDI Topics and Queues) when provisioning a PubSub+ queue or topic endpoint, use the [Queues & Endpoints Module](TODO:fixlink).
 
