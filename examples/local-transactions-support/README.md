@@ -4,7 +4,7 @@ Configuration in this directory creates a [connection factory](https://docs.sola
 
 ## Module Configuration in the Example
 
-### Mandatory Inputs
+### Required Inputs
 
 * `msg_vpn_name` - set to `default` in the example
 * `connection_factory_name` - set to `/JNDI/CF/LocalTransSupport` in the example
