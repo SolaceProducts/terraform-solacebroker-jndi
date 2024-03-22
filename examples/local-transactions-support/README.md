@@ -15,7 +15,7 @@ Configuration in this directory creates a [connection factory](https://docs.sola
 
 Note: connection factories must have the `transport_direct_transport_enabled` input variable disabled to support local and XA transactions. This is automatically ensured in this module if `local_transactions_enabled` is `true`.
 
-Optional module input variables have the same name as the attributes of the underlying provider resource. If omitted then the default for the related resource attribute will be configured on the broker. For attributes and defaults, refer to the [documentation of "solacebroker_msg_vpn_queue"](https://registry.terraform.io/providers/SolaceProducts/solacebroker/latest/docs/resources/msg_vpn_queue#optional).
+Optional module input variables have the same name as the attributes of the underlying provider resource. If omitted then the default for the related resource attribute will be configured on the broker. For attributes and defaults, refer to the [documentation of "solacebroker_msg_vpn_jndi_connection_factory"](https://registry.terraform.io/providers/SolaceProducts/solacebroker/latest/docs/resources/msg_vpn_jndi_connection_factory#optional).
 
 ### Output
 
