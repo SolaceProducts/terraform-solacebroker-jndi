@@ -40,6 +40,7 @@ resource "solacebroker_msg_vpn_jndi_connection_factory" "main" {
   messaging_default_dmq_eligible_enabled       = var.messaging_default_dmq_eligible_enabled
   messaging_default_eliding_eligible_enabled   = var.messaging_default_eliding_eligible_enabled
   messaging_jmsx_user_id_enabled               = var.messaging_jmsx_user_id_enabled
+  messaging_payload_compression_level          = var.messaging_payload_compression_level
   messaging_text_in_xml_payload_enabled        = var.messaging_text_in_xml_payload_enabled
   transport_compression_level                  = var.transport_compression_level
   transport_connect_retry_count                = var.transport_connect_retry_count

@@ -166,6 +166,12 @@ variable "messaging_jmsx_user_id_enabled" {
   default     = null
 }
 
+variable "messaging_payload_compression_level" {
+  description = "The level of compression to apply to the message payload, from 1 (least compression) to 9 (most compression)"
+  type        = number
+  default     = null
+}
+
 variable "messaging_text_in_xml_payload_enabled" {
   description = "Enable or disable encoding of JMS text messages in Publisher (Producer) messages as XML payload"
   type        = bool
