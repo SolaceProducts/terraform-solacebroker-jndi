@@ -1,0 +1,25 @@
+version: 3
+
+project:
+  locator: SolaceProducts_terraform-solacebroker-jndi
+  id: SolaceProducts_terraform-solacebroker-jndi
+  name: terraform-solacebroker-jndi
+  teams: []
+  labels:
+    - terraform
+
+vendoredDependencies:
+  forceRescans: false
+  scanMethod: CLILicenseScan
+  licenseScanPathFilters:
+    exclude:
+      - "./.git"
+      - "./.github"
+
+paths:
+  exclude:
+    - ./.git
+    - ./.github
+
+telemetry:
+  scope: full
